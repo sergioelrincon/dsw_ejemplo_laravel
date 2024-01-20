@@ -1,16 +1,16 @@
-{{-- <!-- Vista que muestra la página "Acerca de" -->
 @extends('layouts.app')
-@section('title', $viewData["title"])
-@section('subtitle', $viewData["subtitle"])
+@section('title', 'Productos disponibles')
+@section('subtitle', 'Productos disponibles')
 @section('content')
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-4 ms-auto">
-				<p class="lead">{{ $viewData["description"] }}</p>
-			</div>
-			<div class="col-lg-4 me-auto">
-				<p class="lead">{{ $viewData["author"] }}</p>
-			</div>
-		</div>
-	</div>
-@endsection --}}
+    <div class="row">
+        @foreach ($products as $key => $product)
+            <div class="col-md-4 col-lg-3 mb-2">
+                <img src="{{ $product['url'] }}" class="img-fluid rounded">
+                <br />
+                <a class="btn btn-primary mt-2" href="{{ route('product.show', ['id' => $key]) }}">
+					{{ $product['nombre'] }}
+				</a>
+            </div>
+        @endforeach
+    </div>
+@endsection
