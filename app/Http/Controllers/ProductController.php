@@ -11,25 +11,25 @@ class ProductController extends Controller
             "nombre"      => "tv",
             "descripción" => "Televisor Samsung",
             "url"         => "/img/game.png",
-            "precio"      => "2999,00 €",
+            "precio"      => "2999,00",
         ],
         "2" => [
             "nombre"      => "iPhone",
             "descripción" => "iPhone 15 Plus",
             "url"         => "/img/safe.png",
-            "precio"      => "1239 €",
+            "precio"      => "1239",
         ],
         "3" => [
             "nombre"      => "chromecast",
             "descripción" => "Google TV",
             "url"         => "/img/submarine.png",
-            "precio"      => "69,99 €",
+            "precio"      => "69,99",
         ],
         "4" => [
             "nombre"      => "Glasses",
             "descripción" => "Multiópticas gafas",
             "url"         => "/img/game.png",
-            "precio"      => "74,00 €",
+            "precio"      => "74,00",
         ],
     ];
 
@@ -52,8 +52,15 @@ class ProductController extends Controller
      */
     public function show(string $id) 
     {
-        foreach ($this->products as $key => $value)
-            $product = ($key == $id) ? $value : null;
+        $product = null;
+
+        foreach ($this->products as $key => $value) {
+            if ($key == $id) 
+            {
+                $product = $value;
+                break;
+            }
+        }
     
         return view("product.show")->with("product", $product);
     }
