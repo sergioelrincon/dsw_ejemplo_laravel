@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre', 255)->nullable();;
+            $table->text('descripcion', 1000)->nullable();;
+            $table->string('url')->nullable();
+            $table->float('precio')->nullable();;
             $table->timestamps();
         });
     }

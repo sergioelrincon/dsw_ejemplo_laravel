@@ -1,38 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
-
-    // Array asociativo con los productos de la tienda.
-    public $products = [
-        "1" => [
-            "nombre"      => "tv",
-            "descripción" => "Televisor Samsung",
-            "url"         => "/img/game.png",
-            "precio"      => "2999,00",
-        ],
-        "2" => [
-            "nombre"      => "iPhone",
-            "descripción" => "iPhone 15 Plus",
-            "url"         => "/img/safe.png",
-            "precio"      => "1239",
-        ],
-        "3" => [
-            "nombre"      => "chromecast",
-            "descripción" => "Google TV",
-            "url"         => "/img/submarine.png",
-            "precio"      => "69,99",
-        ],
-        "4" => [
-            "nombre"      => "Glasses",
-            "descripción" => "Multiópticas gafas",
-            "url"         => "/img/game.png",
-            "precio"      => "74,00",
-        ],
-    ];
-
     /**
      * La función de índice devuelve una vista con una lista de productos.
      *
@@ -40,18 +12,20 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view("product.index")->with("products", $this->products);
+        $products = Product::all();
+        return view("product.index")->with("products", $products);
     }
 
     /**
-     * Recupera un producto específico de una matriz y lo pasa a una vista para su visualización.
+     * Recupera un producto específico de la base de datos y lo pasa a una vista para su visualización.
      *
-     * @param string $id El identificador del producto que se mostrará.
+     * @param int $id El identificador del producto que se mostrará.
      *
-     * @return una vista llamada show que recibe el producto de la petición para que lo serialice.
+     * @return una vista llamada show que recibe el producto de la base de datos para que lo serialice.
      */
-    public function show(string $id)
+    public function show(int $id)
     {
-        return view("product.show")->with("product", $this->products[$id]);
+        $product = Product::find($id);
+        return view("product.show")->with("product", $product);
     }
 }
