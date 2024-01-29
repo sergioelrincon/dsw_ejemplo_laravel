@@ -1,18 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Product;
 
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-
-    public static $products = [
-        ["id"=>"1", "name"=>"TV", "description"=>"La mejor TV", "image" => "game.png", "price"=>"1000"],
-        ["id"=>"2", "name"=>"iPhone", "description"=>"El mejor móvil", "image" => "safe.png", "price"=>"999"],
-        ["id"=>"3", "name"=>"Playstation 5", "description"=>"La mejor consola", "image" => "submarine.png", "price"=>"30"],
-        ["id"=>"4", "name"=>"Portátil gaming", "description"=>"El mejor portátil", "image" => "game.png", "price"=>"100"]
-    ];
 
 
     public function index()
@@ -20,16 +14,15 @@ class ProductController extends Controller
         $viewData = [];
         $viewData["title"] = "Products - Online Store";
         $viewData["subtitle"] =  "List of products";
-        $viewData["products"] = ProductController::$products;
-
+        $viewData["products"] = Product::all();
         return view('product.index')->with("viewData", $viewData);
     }
 
     public function show($id)
     {
         $viewData = [];
-        $product = ProductController::$products[$id-1];
 
+        $product = Product::find($id);
         $viewData["title"] = $product["name"]." - Online Store";
         $viewData["subtitle"] =  $product["name"]." - Product information";
         $viewData["product"] = $product;
