@@ -7,7 +7,7 @@
   </div>
   <div class="card-body">
 
-    <form method="POST" action="">
+    <form method="POST" action="App\Http\Controllers\AdminController@show">
       @csrf
       <div class="row">
         <div class="col">
