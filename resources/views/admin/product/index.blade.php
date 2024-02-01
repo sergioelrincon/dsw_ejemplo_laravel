@@ -31,6 +31,7 @@
         <label class="form-label">Descripción</label>
         <textarea class="form-control" name="description" rows="3"></textarea>
       </div>
+      <a href="{{ asset('storage/archivos') }}">Subir imagen</a>
       <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
   </div>
