@@ -33,6 +33,10 @@
           <a class="nav-link active" href="{{ route('product.index') }}">Productos</a>          
           <a class="nav-link active" href="{{ route('home.about') }}">Acerca de</a>
         </div>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('products.index') }}">Productos</a>
+        </li>
+
       </div>
     </div>
   </nav>
