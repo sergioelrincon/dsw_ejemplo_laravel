@@ -16,15 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', "App\Http\Controllers\HomeController@index")->name("home.index");
 
 Route::get("/about", "App\Http\Controllers\HomeController@about")->name("home.about");
-//Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/products', 'App\Http\Controllers\ProductController@index')->name("product.index");
+Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name("product.show");
 
-//Auth::routes();
+Route::get('/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name("admin.home.index");
+Route::get('/admin/products', 'App\Http\Controllers\Admin\AdminProductController@index')->name("admin.product.index");
+Route::get('/admin/products/{id}/edit', 'App\Http\Controllers\Admin\AdminProductController@edit')->name("admin.product.edit");
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-//Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::post('/admin/products/post', 'App\Http\Controllers\Admin\AdminProductController@post')->name("admin.product.post");
+Route::put('/admin/products/update', 'App\Http\Controllers\Admin\AdminProductController@update')->name("admin.product.update");
+Route::delete('/admin/products/delete', 'App\Http\Controllers\Admin\AdminProductController@destroy')->name("admin.product.delete");

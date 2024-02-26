@@ -7,15 +7,16 @@
 <!-- Inyectamos el texto con el contenido de la página en el yield "content" -->
 @section('content') 
 
-<h1>Listado de Productos</h1>
-
-@foreach ($products as $id => $product)
-    <div>
-        <a href="{{ route('products.show', ['id' => $id]) }}">
-            <img src="{{ asset('img/' . $product['image']) }}" alt="{{ $product['name'] }}">
-            <h2>{{ $product['name'] }}</h2>
-        </a>
+    <div class="row">
+        <div class="col-md-6 col-lg-4 mb-2">
+            <img src="{{ asset("/img/game.png") }}" class="img-fluid rounded">
+        </div>
+        <div class="col-md-6 col-lg-4 mb-2">
+            <img src="{{ asset("/img/safe.png") }}" class="img-fluid rounded">
+        </div>
+        <div class="col-md-6 col-lg-4 mb-2">
+            <img src="{{ asset("/img/submarine.png") }}" class="img-fluid rounded">
+        </div>
     </div>
-@endforeach
 
 @endsection
