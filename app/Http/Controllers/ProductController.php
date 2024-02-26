@@ -12,8 +12,8 @@ class ProductController extends Controller
     public function index()
     {
         $viewData = [];
-        $viewData["title"] = "Products - Online Store";
-        $viewData["subtitle"] =  "List of products";
+        $viewData["title"] = "Productos - Tienda online";
+        $viewData["subtitle"] =  "Lista de productos";
         $viewData["products"] = Product::all();
         return view('product.index')->with("viewData", $viewData);
     }
@@ -23,8 +23,8 @@ class ProductController extends Controller
         $viewData = [];
 
         $product = Product::find($id);
-        $viewData["title"] = $product["name"]." - Online Store";
-        $viewData["subtitle"] =  $product["name"]." - Product information";
+        $viewData["title"] = $product["name"]." - Tienda online";
+        $viewData["subtitle"] =  $product["name"]." - Información del producto";
         $viewData["product"] = $product;
         
         return view('product.show')->with("viewData", $viewData);
